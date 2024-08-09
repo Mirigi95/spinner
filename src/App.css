@@ -1,0 +1,83 @@
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.wheel {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 10px solid #4caf50; /* Green border for the wheel */
+  position: relative;
+  overflow: hidden; /* Hide overflow for segments */
+  transition: transform 2s cubic-bezier(0.3, 0.0, 0.1, 1); /* Smooth spinning */
+}
+
+.wheel.spinning {
+  transform: rotate(720deg); /* Full spin (two rotations) */
+}
+
+.segment {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 50%;
+  transform-origin: 0% 100%; /* Pivot at the bottom-center */
+  background-color: #ddd;
+  border: 1px solid #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #333;
+}
+
+.segment:nth-child(1) { background-color: #ff6347; } /* Tomato */
+.segment:nth-child(2) { background-color: #4682b4; } /* Steel Blue */
+.segment:nth-child(3) { background-color: #32cd32; } /* Lime Green */
+.segment:nth-child(4) { background-color: #ffd700; } /* Gold */
+.segment:nth-child(5) { background-color: #ff4500; } /* Orange Red */
+
+.pointer {
+  position: absolute;
+  top: 10px; /* Position the pointer at the top of the wheel */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1; /* Ensure the pointer is above the wheel */
+}
+
+.App-logo {
+  height: 50px; /* Set height for the logo */
+}
+
+/* Button styles */
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:disabled {
+  background-color: #ccc; /* Grey out the button when spinning */
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+h2 {
+  margin-top: 20px; /* Add spacing above the result */
+  font-size: 24px;
+}
